@@ -10,10 +10,11 @@ package Dominio;
  * @author Alumno Mañana
  */
 public class Producto {
-    private int idProducto;
+    private int idProducto=alea(10000,99999);
     private String nombre;
     private double precio;
     private int contadorProductos;
+    
 
     public int getIdProducto() {
         return idProducto;
@@ -44,8 +45,38 @@ public class Producto {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + this.idProducto;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        if (this.idProducto != other.idProducto) {
+            return false;
+        }
+        return true;
+    }
+    
+
+    @Override
     public String toString() {
         return "Id: " + idProducto + ", name: " + nombre + ", price: " + precio + ", contadorProductos=" + contadorProductos + '}';
+    }
+    
+    public static int alea(int li, int ls){
+        return (int)((Math.round(Math.random()*(ls-li))+li));
     }
     
     
