@@ -72,7 +72,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Id: " + idProducto + ", name: " + nombre + ", price: " + precio + ", contadorProductos=" + contadorProductos + '}';
+        return "Id: " + idProducto + ", name: " + nombre + ", price: " + precio ;
     }
     
     public static int alea(int li, int ls){

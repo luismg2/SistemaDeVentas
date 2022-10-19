@@ -16,11 +16,12 @@ import java.util.Scanner;
  */
 public class SistemaDeVentas {
     static Scanner ent = new Scanner(System.in);
-    static ArrayList<Orden>ord=new ArrayList<>();
+    static ArrayList<Orden>ord=new ArrayList<>();//ArrayList para guardar ordenes,posteriormente las visualizaremos
     
     public static void main(String[] args) {
         System.out.println("\n\n\n\n\n\t───── ❝ BIENVENIDO AL SISTEMA DE VENTAS ❞ ─────\n\n\n\n");//mensaje de introduccion
-        pressAnyKeyToContinue();  //Funcion opcional para parar el programa, para continuar solo hay que pulsar una tecla
+        pressAnyKeyToContinue();  
+        //Aqui haremos un menu para ver si crear objetos de tipo Orden o visualizar las ordenes
         int op=-1;
         while(op!=0){
             System.out.println("\t⊱ ━━━━.⋅ ¿QUE DESEA HACER? ⋅.━━━━ ⊰\t\t");
@@ -31,16 +32,13 @@ public class SistemaDeVentas {
             op=ent.nextInt();
             switch(op){
                 case 1:
-                    ArrayList<Producto>list=new ArrayList<>();
-                    Orden o=new Orden(alea(100,999),list);
+                    ArrayList<Producto>list=new ArrayList<>(); //Arraylist para crear el objeto Orden, ya que un objeto debe tener un arrayList diferente
+                    Orden o=new Orden(alea(100,999),list); //Crear el objeto
                     menu(o);//Crear una orden
                     //pressAnyKeyToContinue();  //Funcion opcional esta la pongo como comentario
                     break;
                 case 2:
-                    //Aqui visualizaremos las ordenes
-                    for(Orden i:ord){
-                        System.out.println(i);
-                    }
+                    visualizar();//Aqui visualizaremos las ordenes
                     break;
                 case 0:
                     break;
@@ -91,6 +89,18 @@ public class SistemaDeVentas {
             for(int i=0;i<2;i++){
                 System.out.println("");
             }
+        }
+    }
+    
+    public static void visualizar(){
+        if(ord.isEmpty()){
+            System.out.println("\nDebe de tener al menos una orden para poder ejecutar esta acción\n");
+            pressAnyKeyToContinue();
+        }else{
+            for(Orden i:ord){
+                System.out.println(i);
+            }
+            pressAnyKeyToContinue();
         }
     }
 
@@ -158,7 +168,7 @@ public class SistemaDeVentas {
         return (int)((Math.round(Math.random()*(ls-li))+li));
     }
 
-    static public void pressAnyKeyToContinue(){
+    static public void pressAnyKeyToContinue(){//Funcion opcional para parar el programa, para continuar solo hay que pulsar una tecla
         String seguir;
         Scanner teclado = new Scanner(System.in);
         System.out.println("Pulsa enter para continuar...");
