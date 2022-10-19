@@ -19,11 +19,11 @@ public class SistemaDeVentas {
     static Orden o1=new Orden(alea(100,999));
     
     public static void main(String[] args) {
-        System.out.println("\n\n\n\n\n\t───── ❝ BIENVENIDO AL SISTEMA DE VENTAS ❞ ─────\n\n\n\n");
-        pressAnyKeyToContinue();  
+        System.out.println("\n\n\n\n\n\t───── ❝ BIENVENIDO AL SISTEMA DE VENTAS ❞ ─────\n\n\n\n");//mensaje de introduccion
+        pressAnyKeyToContinue();  //Funcion opcional para parar el programa, para continuar solo hay que pulsar una tecla
         menu();
-        pressAnyKeyToContinue();  
-        System.out.println("\n\n\n\n\t───── ❝ GRACIAS POR COMPRAR EN LUIS COMPONENTS ❞ ─────\n\n\n\n");
+        //pressAnyKeyToContinue();  //Funcion opcional esta la pongo como comentario
+        System.out.println("\n\n\n\n\t───── ❝ GRACIAS POR COMPRAR EN LUIS COMPONENTS ❞ ─────\n\n\n\n");//mensaje final
 
 
     }
@@ -44,24 +44,23 @@ public class SistemaDeVentas {
             opcion=ent.nextInt();
             switch(opcion){
                 case 1:
-                    //ent.nextInt();
-                    productos();
+                    productos();//funcion para agregar productos atraves de un scanner
                     break;
                 case 2:
-                    o1.visualizar();
+                    o1.visualizar();//Visualizacion del arrayList con un for
                     pressAnyKeyToContinue();  
                     break;
                 case 3:
-                    o1.eliminar();
+                    o1.eliminar();//Eliminar un objeto del arraylist
                     pressAnyKeyToContinue();
                     break;
                 case 4:
-                    o1.mostrarOrden();
+                    o1.mostrarOrden();//Mostrar la orden final con los productos y el pago total
                     break;
                 case 0:
                     break;
                 default:
-                    System.out.println("\nIntroduzca un número entre 0 y ");
+                    System.out.println("\nIntroduzca un número entre 0 y 4");
                     break;
             }
             for(int i=0;i<2;i++){
@@ -104,7 +103,6 @@ public class SistemaDeVentas {
             nproduct=ent.nextInt();
         }
         if(nproduct==1){
-            //Producto[] lista = null;
             o1.agregarProducto(p1);
         }else if(nproduct==2){
             o1.agregarProducto(p2);
@@ -131,7 +129,7 @@ public class SistemaDeVentas {
         }
     }
     
-    public static int alea(int li, int ls){
+    public static int alea(int li, int ls){//para introducir un numero aleatorio
         return (int)((Math.round(Math.random()*(ls-li))+li));
     }
 

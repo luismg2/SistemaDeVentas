@@ -41,7 +41,7 @@ public class Orden {
         System.out.println("");
         int id=1;
         for(Producto i:productlist){
-            System.out.println(" "+id+". "+i.getNombre()+"\t\t\t"+i.getPrecio());
+            System.out.println(" "+id+". "+i.getNombre()+"  \t\t  "+i.getPrecio());
             id++;
         }
     }
@@ -51,7 +51,7 @@ public class Orden {
         for(Producto i:productlist){
             pago=pago+i.getPrecio();
         }
-        System.out.print("El total a pagar es: "+pago);
+        System.out.print("\t El total a pagar es: "+pago);
         return pago;
     }
     
@@ -60,7 +60,7 @@ public class Orden {
         System.out.println("\t\tOrden: "+idOrden);
         System.out.println("\tHay "+productlist.size()+" productos en la lista\n");
         for(Producto i:productlist){
-            System.out.println(" »»——　"+i.getNombre()+"\t\t"+i.getPrecio()+"€ ——««");
+            System.out.println(" »»——　"+i.getNombre()+"  \t  "+i.getPrecio()+"€ ——««");
         }
         System.out.println("");
         calcularTotal();
@@ -78,9 +78,9 @@ public class Orden {
                 System.out.print("Introduzca un número entre el 1 y el "+productlist.size()+": ");
                 nproduct=ent.nextInt();
             }
-            for(int i=1;i<productlist.size();i++){
-                if(i==nproduct){
-                    productlist.remove(nproduct);
+            for(int i=0;i<productlist.size();i++){
+                if(i==nproduct-1){
+                    productlist.remove(i);
                     System.out.println("\nEl producto se ha eliminado con exito\n");
                     maxProductos++;
                     break;
