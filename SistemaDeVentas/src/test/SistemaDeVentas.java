@@ -7,6 +7,7 @@ package test;
 
 import Dominio.Orden;
 import Dominio.Producto;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -14,21 +15,47 @@ import java.util.Scanner;
  * @author Alumno Mañana
  */
 public class SistemaDeVentas {
-    static Orden o=new Orden();
     static Scanner ent = new Scanner(System.in);
-    static Orden o1=new Orden(alea(100,999));
+    static ArrayList<Orden>ord=new ArrayList<>();
     
     public static void main(String[] args) {
         System.out.println("\n\n\n\n\n\t───── ❝ BIENVENIDO AL SISTEMA DE VENTAS ❞ ─────\n\n\n\n");//mensaje de introduccion
         pressAnyKeyToContinue();  //Funcion opcional para parar el programa, para continuar solo hay que pulsar una tecla
-        menu();
-        //pressAnyKeyToContinue();  //Funcion opcional esta la pongo como comentario
+        int op=-1;
+        while(op!=0){
+            System.out.println("\t⊱ ━━━━.⋅ ¿QUE DESEA HACER? ⋅.━━━━ ⊰\t\t");
+            System.out.println("\t(1) Crear una Orden");
+            System.out.println("\t(2) Visualizar Ordenes");
+            System.out.println("\t(0) SALIR\n");
+            System.out.print("   Seleccione una opcion: ");
+            op=ent.nextInt();
+            switch(op){
+                case 1:
+                    ArrayList<Producto>list=new ArrayList<>();
+                    Orden o=new Orden(alea(100,999),list);
+                    menu(o);//Crear una orden
+                    //pressAnyKeyToContinue();  //Funcion opcional esta la pongo como comentario
+                    break;
+                case 2:
+                    //Aqui visualizaremos las ordenes
+                    for(Orden i:ord){
+                        System.out.println(i);
+                    }
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("\nIntroduzca un número entre 0 y 2");
+                    break;
+            }
+        }
+        System.out.println("");
         System.out.println("\n\n\n\n\t───── ❝ GRACIAS POR COMPRAR EN LUIS COMPONENTS ❞ ─────\n\n\n\n");//mensaje final
 
 
     }
     
-    public static void menu(){
+    public static void menu(Orden o){
         char sw;
         int opcion=-1;
         while(opcion!=0){
@@ -38,29 +65,27 @@ public class SistemaDeVentas {
             System.out.println("\t(1) Agregar Productos a su lista");
             System.out.println("\t(2) Ver Cesta");
             System.out.println("\t(3) Eliminar Producto");
-            System.out.println("\t(4) Terminar Orden");
-            System.out.println("\t(0) SALIR\n");
+            System.out.println("\t(0) Mostrar Orden y Finalizar\n");
             System.out.print("Seleccione la opción a elegir: ");
             opcion=ent.nextInt();
             switch(opcion){
                 case 1:
-                    productos();//funcion para agregar productos atraves de un scanner
+                    productos(o);//funcion para agregar productos atraves de un scanner
                     break;
                 case 2:
-                    o1.visualizar();//Visualizacion del arrayList con un for
+                    o.visualizar(o);//Visualizacion del arrayList con un for
                     pressAnyKeyToContinue();  
                     break;
                 case 3:
-                    o1.eliminar();//Eliminar un objeto del arraylist
+                    o.eliminar(o);//Eliminar un objeto del arraylist
                     pressAnyKeyToContinue();
                     break;
-                case 4:
-                    o1.mostrarOrden();//Mostrar la orden final con los productos y el pago total
-                    break;
                 case 0:
+                    o.mostrarOrden(o);//Mostrar la orden final con los productos y el pago total
+                    ord.add(o);
                     break;
                 default:
-                    System.out.println("\nIntroduzca un número entre 0 y 4");
+                    System.out.println("\nIntroduzca un número entre 0 y 3");
                     break;
             }
             for(int i=0;i<2;i++){
@@ -69,7 +94,7 @@ public class SistemaDeVentas {
         }
     }
 
-    public static void productos(){
+    public static void productos(Orden o){
         Producto p1=new Producto("Playstation 5",500);
         Producto p2=new Producto("Xbox Series S",300);
         Producto p3=new Producto("Nintendo Switch",350);
@@ -103,27 +128,27 @@ public class SistemaDeVentas {
             nproduct=ent.nextInt();
         }
         if(nproduct==1){
-            o1.agregarProducto(p1);
+            o.agregarProducto(o,p1);
         }else if(nproduct==2){
-            o1.agregarProducto(p2);
+            o.agregarProducto(o,p2);
         }else if(nproduct==3){
-            o1.agregarProducto(p3);
+            o.agregarProducto(o,p3);
         }else if(nproduct==4){
-            o1.agregarProducto(p4);
+            o.agregarProducto(o,p4);
         }else if(nproduct==5){
-            o1.agregarProducto(p5);
+            o.agregarProducto(o,p5);
         }else if(nproduct==6){
-            o1.agregarProducto(p6);
+            o.agregarProducto(o,p6);
         }else if(nproduct==7){
-            o1.agregarProducto(p7);
+            o.agregarProducto(o,p7);
         }else if(nproduct==8){
-            o1.agregarProducto(p8);
+            o.agregarProducto(o,p8);
         }else if(nproduct==9){
-            o1.agregarProducto(p9);
+            o.agregarProducto(o,p9);
         }else if(nproduct==10){
-            o1.agregarProducto(p10);
+            o.agregarProducto(o,p10);
         }else if(nproduct==11){
-            o1.agregarProducto(p11);
+            o.agregarProducto(o,p11);
         }else if(nproduct==0){
             //Este solo sirve para volver atras
         }
