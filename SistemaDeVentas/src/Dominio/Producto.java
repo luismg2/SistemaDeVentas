@@ -10,7 +10,7 @@ package Dominio;
  * @author Alumno Mañana
  */
 public class Producto {
-    private int idProducto=alea(10000,99999);
+    private int idProducto;
     private String nombre;
     private double precio;
     private int contadorProductos;
@@ -44,6 +44,13 @@ public class Producto {
         this.precio = precio;
     }
 
+    public Producto(String nombre, double precio, int idProducto) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.idProducto = idProducto;
+    }
+    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -72,7 +79,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Id: " + idProducto + ", name: " + nombre + ", price: " + precio ;
+        return "Id: " +idProducto + ", producto: " + nombre + ", precio: " + precio ;
     }
     
     public static int alea(int li, int ls){

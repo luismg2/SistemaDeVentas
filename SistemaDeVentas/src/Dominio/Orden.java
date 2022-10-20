@@ -35,9 +35,14 @@ public class Orden {
         return productlist;
     }
 
+    public int getIdOrden() {
+        return idOrden;
+    }
+    
+
     @Override
     public String toString() {
-        return "\tOrden: " + idOrden+" productlist: (" + productlist+")";
+        return "\tOrden: " + idOrden+" productos: (" + productlist+")";
     }
     
     
